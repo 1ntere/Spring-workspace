@@ -1,0 +1,11 @@
+.container {
+	width : 80%;
+	height : 400px;
+	margin : auto;
+	background-color : #f2f2f2;
+}
+
+.container img {
+	width : 30%;
+	height : auto;
+}
