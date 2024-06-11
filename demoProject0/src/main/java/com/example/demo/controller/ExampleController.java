@@ -1,4 +1,4 @@
-package com.example.demo;
+package com.example.demo.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -17,6 +17,7 @@ public class ExampleController {
 	*/
 	@GetMapping("example")// /example Get 방식 요청 매핑
 	public String exampleMethod() {
+		System.out.println("/example 요청받았는지 확인");
 		return "example";
 	}
 }

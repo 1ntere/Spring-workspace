@@ -1,15 +1,21 @@
 package com.example.demo.model.dto;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
+
 /*
 앞으로 Getter와 Setter는 Lombok 라이브러리를 활용해서 길게 작성하지 않음
 
 기본 생성자
 */
-//@Getter
-//@Setter
-//@NoArgsConstructor
-//@AllArgsConstructor
-//@ToString
+@Getter
+@Setter
+@NoArgsConstructor//기본생성자
+@AllArgsConstructor
+@ToString
 public class MemberDTO {
 	//나중에 DB랑 연결할 모델들 작성
 //필드

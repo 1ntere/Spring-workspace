@@ -4,17 +4,27 @@
 		<meta charset="utf-8">
 		<title>정적 자원 (js, css, html) 연결</title>
 		<link rel="stylesheet" href="/css/ex.css">
+		                        <!-- /css : spring에서 static폴더와 templates폴더는
+		                                    같은 위치에 있다고 보기 때문에
+		                                    /css로 시작한다. -->
 	</head>
 	<body>
 		<h1>정적 자원을 연결하는 곳 입니다.</h1>
 		<div class="container">
-			<!-- link 연결 script 파일 구분지어서 연결 -->
 			<img src="/image/healing.jpg">
+                 <!-- /image : spring에서 static폴더와 templates폴더는
+		                       같은 위치에 있다고 보기 때문에
+		                       /image로 시작한다. -->
 			<img src="/image/hogam.jpg">
 			<img src="/image/marley.jpg">
 			
-			<button id="btn">제이쿼리 연결</button>
+			<button id="btn">연결테스트</button>
+			   <!-- id="btn" : 대신 onclick="btn()"을 사용해도 된다. -->
+			<button onclick="btn()">연결테스트</button>
 			<script src="/js/ex.js"></script>
+                    <!-- /js : spring에서 static폴더와 templates폴더는
+		                       같은 위치에 있다고 보기 때문에
+		                       /js로 시작한다. -->
 		</div>
 	</body>
 </html>
