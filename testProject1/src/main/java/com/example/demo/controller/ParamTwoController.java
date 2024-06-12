@@ -21,7 +21,7 @@ public class ParamTwoController {
 							   @RequestParam(value="snackLike", defaultValue="snackLike", required=false) String snackLike) {
 		log.info(snackName);
 		log.info(snackCompany);
-		log.info("" + snackPrice);
+		//log.info(snackPrice);
 		/*
 		★ 오류가 발생한 코드
 		log.info(snackPrice);
