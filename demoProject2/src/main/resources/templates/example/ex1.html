@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<!-- th 속성 추가 선언 -->
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+           <!-- xmlns:th : 네임스페이스로 th를 사용하겠다 -->
+	<head>
+		<meta charset="utf-8">
+		<title>타임리프 예제 1</title>
+	</head>
+	<body>
+		<h1>타임리프 예제 1</h1>
+		<pre>
+	Spring EL(스프링 표현 언어)
+	${key} : 변수, Model 등을 이용해서 세팅한 값 출력
+	
+	th:text 속성 = "속성값"
+		타임리프를 이용해서 속성값이 작성된 태그의 내용을 (innerText)로 출력
+	
+	★ th 속성은 해석된 후 사라지기 때문에 출력된 화면(응답화면) 보이지 않음
+		</pre>
+		
+		<h4 th:test="${test1}">test1 값 확인</h4>
+	</body>
+</html>
