@@ -1,10 +1,54 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 	<head>
 		<meta charset="utf-8">
-		<title>Insert title here</title>
+		<title>멤버 정보</title>
 	</head>
 	<body>
-	
+		<h1>멤버 정보 보기</h1>
+		
+		<h3>방법 1</h3>
+		<ul>
+			<li th:text="${mem}">member 객체</li>
+			<li th:text="${mem.memberName}">member 이름</li>
+			<li th:text="${mem.memberPhone}">member 번호</li>
+			<li th:text="${mem.memberAge}">member 나이</li>
+		</ul>
+		
+		<hr>
+		<h3>방법 2</h3>
+		<ul th:object="${mem}">
+			<li th:text="*{memberName}">member 이름</li>
+			<li th:text="*{memberPhone}">member 번호</li>
+			<li th:text="*{memberAge}">member 나이</li>
+		</ul>
+		
+		<hr>
+		<h3>방법 3</h3>
+		<table border="1">
+			<thead>
+				<tr>
+					<th>이름</th>
+					<th>번호</th>
+					<th>나이</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="mem : ${memList}" th:object="${mem}">
+				                <!-- memList : Controller에서 가져온 memList를 모두 가져온 모음집 -->
+				        <!-- mem : mem 변수에 하나씩 값을 담아줌 -->
+				                          <!-- th:object="{mem}" : object로 mem이
+				                                                   * 표시를 매개로
+				                                                   모두 앞에다 붙였음 -->
+					<td th:text="*{memberName}">member 이름</td>
+					        <!-- * : 원래는 방법1처럼 ${mem.memberName}을 써야 하지만
+					                 th:object="{mem}"을 적어주었기 때문에 memberName만 적어줘도 됨 -->
+					            <!-- th:object="{mem}"을 적어주었기 때문에 *{mem.memberName}으로 작성하면
+					                 	${mem.mem.memberName}이 되어 오류 발생 -->
+					<td th:text="*{memberPhone}">member 번호</td>
+					<td th:text="*{memberAge}">member 나이</td>
+				</tr>
+			</tbody>
+		</table>
 	</body>
 </html>

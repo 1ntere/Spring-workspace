@@ -9,7 +9,7 @@ import lombok.*;
 @ToString
 public class MemberDTO {
 //필드
-	private String Name;
-	private String Phone;
-	private int Age;
+	private String memberName;
+	private String memberPhone;
+	private int memberAge;
 }
