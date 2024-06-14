@@ -189,7 +189,10 @@ public class ExampleController {
 		
 		
 		model.addAttribute("std", std);
-
+		mem.setMemberNo("1111");
+		mem.setMemberName("박세모");
+		mem.setMemberAge(30);
+		model.addAttribute("mem", mem);
 		
 		return "example/ex5";
 	}
