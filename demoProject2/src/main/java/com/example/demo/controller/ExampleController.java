@@ -140,4 +140,57 @@ public class ExampleController {
 		
 		return "example/ex3";
 	}
+	
+	@GetMapping("ex4")
+	public String ex4(Model model) {
+		//[1] 1-1) ExampleController에서 전달해준 값이 없기 때문에
+		//   맨 처음에는 std 없음이 뜨는 것이 정상
+		
+		//[1] 1-2) 이제 std에 값을 넣어주면 std 있음이 떠야 정상
+		StudentDTO std = new StudentDTO("7890", "피카츄", 10);
+		model.addAttribute("std", std);
+		
+		//[1] 2) mem에 값을 넣어주면 mem 있음이 떠야 정상
+		MemberDTO mem = new MemberDTO("123", "둘리", 20);
+		model.addAttribute("mem", mem);
+		
+		//[1] 3)
+		model.addAttribute("testIf", "테스트 중");
+		
+		
+		//[2] 1)
+		model.addAttribute("num", "300");
+		
+		//[2] 2)
+		model.addAttribute("alpha", "A");
+		
+		//[2] 3)
+		StudentDTO std1 = new StudentDTO("1234", "라이츄", 30);
+		model.addAttribute("std1", std1);
+		
+		return "example/ex4";
+	}
+	
+	@GetMapping("ex5")
+	public String ex5(Model model) {
+		//message 값으로 전달할 값 작성하기
+		model.addAttribute("message", "타임리프 + 자바스크립트 사용예제");
+		
+		//안전탐색연산자 1, 2)
+		//현재 ex5.html에는 std에 어떤 값을 저장해서 전달 해준 코드가 없음
+		StudentDTO std = new StudentDTO();
+		std.setStudentNo("2222");
+		std.setName("홍길동");
+		model.addAttribute("std", std);
+		
+		//안전탐색연산자 2)
+		MemberDTO mem = new MemberDTO();
+		
+		
+		
+		model.addAttribute("std", std);
+
+		
+		return "example/ex5";
+	}
 }

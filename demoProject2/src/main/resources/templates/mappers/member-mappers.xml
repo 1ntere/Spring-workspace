@@ -11,7 +11,7 @@ mappers 안에 xml 파일을 생성
 <!Doctype 옆에 mybatis 세팅>
  -->
 
-<!-- 작성방법 -->
+<!-- 작성방법
 <select id="" resultType="결과전송">
 	평소 작성했던 select sql 작성
 </select>
@@ -20,3 +20,4 @@ mappers 안에 xml 파일을 생성
 <insert id="" parameterType="넣을값가져오기">
 	평소 작성했던 insert sql 작성
 </insert>
+ -->

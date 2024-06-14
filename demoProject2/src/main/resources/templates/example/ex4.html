@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta charset="utf-8">
+		<title>타임리프 예제4</title>
+	</head>
+	<body>
+		<h1>타임리프 예제 4</h1>
+		<h3>타임리프 조건문 [1] = th:if / th:unless</h3>
+		<pre>
+	th:if=${조건식}
+		조건식이 ★true★인 경우에만
+		해당 속성이 작성된 요소를 화면에 출력
+		ex.관리자일 때 상품 수정하기를 출력할지 말지 판단
+			th:if=${만약에 관리자가 접속했다면} = 상품 수정하기를 보여주겠다!
+	
+	th:unless=${조건식}
+		조건식이 ★false★인 경우에만
+		해당 속성이 작성된 요소를 화면에 출력
+		ex.비밀번호가 일치하지 않으면 비밀번호 찾기 버튼 보여주기
+		th:unless=${만약에 비밀번호가 일치하지 않는다면} = 비밀번호 찾기 버튼 출력하자!
+		</pre>
+		
+		<!-- 1-1) -->
+		<th:block th:if="${std == null}">
+		     <!-- th:if="${std == null}" : std의 값이 없을 경우 -->
+		<h4>std 값 없음</h4>
+		</th:block>
+		
+		<!-- 1-2) -->
+		<th:block th:unless="${std == null}">
+		     <!-- th:unless="${std == null}" : std의 값이 있을 경우 -->
+		<h4>std 값 있음</h4>
+		</th:block>
+		
+		<!-- 2) -->
+		<th:block th:if="${mem == null}">
+		<h1>mem 값 없음</h1>
+		</th:block>
+		
+		<th:block th:unless="${mem == null}">
+		<h1>mem 값 있음</h1>
+		</th:block>
+		
+		<h3>th:if / th:unless 조건식에 변수명/값 하나만 작성한 경우</h3>
+		<pre>
+		if문에 작성된 값이 있으면 (값 != null) -> true
+		if문에 작성된 값이 있으면 (값 == null) -> false
+		</pre>
+		
+		<h4 th:if="${std}">std 값이 존재합니다. ${std != null}에서 != null 생략 가능</h4>
+		
+		<h4 th:if="${temp}">temp로 지정된 값이 존재합니다.</h4>
+			<!-- Controller 에서 temp 값으로
+				 model.addAttribute로 전달된 값이 없기 때문에
+				 화면에 temp로 지정된 태그는 보이지 않음 -->
+		
+		<!-- 3) -->
+		<!-- model.addAttribute로 testIf라는 이름을 통해 th:if="${testIf}" 값 보여주기 -->
+		<h4 th:if="${testIf}">테스트 중이 들어왔습니다.</h4>
+		<!-- th:if를 사용할 경우 th:text를 같이 사용하면 충돌이 나서 에러가 발생가능 -->
+		
+		<h3>타임리프 조건문 [2] = th:switch / th:case</h3>
+		<!-- 1) -->
+		<!-- 변수 값에 따라서 알맞은 case 실행 -->
+		<th:block th:switch="${num}">
+			<h4 th:case="100">AAAAAAAA</h4>
+			<h4 th:case="200">BBBBBBBB</h4>
+			<h4 th:case="300">CCCCCCCC</h4>
+			
+			<!-- th:case에서 default를 사용하는 방법 : default 대신에 th:case=""를 작성
+			                                     위에서 작성한 값(100, 200, 300)이외에 모두 
+			                                     해당 값으로 바꿔준다는 의미
+			                                     만약에 Controller에서 num값으로 가져오는 값이 없다면
+			                                     default 값인 th:case=""에 작성된 내용
+			                                     ZZZZZZZZ 가 출력될 것 -->
+			<h4 th:case="">ZZZZZZZZ</h4>
+		</th:block>
+		
+		<!-- 2) -->
+		<!-- switch case 문으로 알파벳 작성하고
+			 
+			 위 값이 없으면 선택된 알파벳이 없습니다. -->
+		<th:block th:switch="${alpha}">
+			<h4 th:case="A">알파벳 A</h4>
+			<h4 th:case="B">알파벳 B</h4>
+			<h4 th:case="C">알파벳 C</h4>
+			<h4 th:case="">선택된 알파벳이 없습니다.</h4>
+		</th:block>
+		
+		<hr>
+		<!-- 3) -->
+		<h3>삼항 연산자</h3>
+		<pre>
+	타임리프 속성(th:) 에 삼항 연산자 (조건식 ? 참인경우 : 거짓인경우) 작성 가능
+	
+	★작성법만 잘 익히자
+		</pre>
+		
+		<h4 th:text="${std1.age == 30} ? '서른' : '서른아님'">
+			"${조건식} ? '참일경우출력할내용' : '거짓인경우출력할내용'"
+		</h4>
+		
+	</body>
+</html>
