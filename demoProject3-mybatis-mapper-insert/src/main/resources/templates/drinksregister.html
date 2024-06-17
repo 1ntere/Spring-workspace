@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta charset="utf-8">
+		<title>음료수등록하기</title>
+	</head>
+	<body>
+		<h1>음료수등록하기</h1>
+		<form th:action="@{/register}" method="post" th:object="${drinks}">
+			음료수명 : <input type="text" th:field="*{drinksName}"><br>
+			음료수가격 : <input type="number" th:field="*{drinksPrice}"><br>
+			음료수수량 : <input type="number" th:field="*{drinksQuantity}"><br>
+			<button>제출하기</button>
+		</form>
+	</body>
+</html>
