@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.shoppingmall.mapper.SnacksMapper">
+   <!-- namespace : mapper로 감싼 sql코드를 java로 연결하기 위해
+                    namespace 안에 작성된 자바파일로 sql구문을 전송할 위치를 작성
+                    주로 interface로 기능 목록만 작성하는 테이블명Mapper.java 파일이 될 것임 -->
+	<select id="getAllSnacks" resultType="com.shoppingmall.dto.Snacks">
+	   <!-- id : Mapper로 SQL에 작성한 기능을 전송하기 위해 전송할 아이디 값을 id에 적어준다 -->
+	                     <!-- resutlType : DB에서 가져온 과자리스트 결과를 Sncak.java 파일에
+	                                       Getter와 Setter를 지정해서
+	                                       사용자 화면에 보여줄 것을 resultType에 전송한다. -->
+		SELECT * FROM snacks
+		               <!-- ; : 보통 Oracle sql Developer에선 ;(세미콜론)을 통해
+		                        하나의 명령을 끝냈으나
+		                        java에서 sql문은 ; 을 사용하면 안된다. -->
+	</select>
+</mapper>

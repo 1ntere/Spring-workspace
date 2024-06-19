@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta charset="utf-8">
+		<title>snackList</title>
+	</head>
+	<body>
+		<h1>과자리스트</h1>
+		<table border="1">
+			<thead>
+				<tr>
+					<th>ID</th>
+					<th>과자명</th>
+					<th>가격</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="s : ${snackList}">
+					<td th:text="${s.snack_id}">
+					<td th:text="${s.snack_name}">
+					<td th:text="${s.price}">
+					            <!-- price : Oracle sql Developer에서
+					                         컬럼명이 price이므로 그대로 가져온다. -->
+				</tr>
+			</tbody>
+		</table>
+		<a href="/">메인으로 돌아가기</a>
+	</body>
+</html>
