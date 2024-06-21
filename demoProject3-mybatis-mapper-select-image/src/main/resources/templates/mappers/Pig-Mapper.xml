@@ -9,9 +9,15 @@
 		SELECT * FROM pigs
 	</select>
 	
-	<!-- 돼지 상세보기 -->
+	<!-- 돼지 정보 상세보기 -->
 	<select id="getPigById" resultType="com.shoppingmall.dto.Pig" parameterType="int">
 		SELECT * FROM pigs
 		WHERE pig_id = #{pig_id}
 	</select>
+	
+	<!-- 돼지 정보 입력하기 -->
+	<insert id="uploadPig" parameterType="com.shoppingmall.dto.Pig">
+		INSERT INTO pigs (pig_id, pig_name, pig_age, pig_image_path)
+		VALUES (pig_seq.NEXTVAL, #{pig_name}, #{pig_age}, #{pig_image_path})
+	</insert>
 </mapper>
