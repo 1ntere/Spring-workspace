@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta charset="utf-8">
+		<title>옷 Shopping Mall</title>
+		<link rel="stylesheet" href="/css/styles.css">
+	</head>
+	<body>
+		<h1>옷 쇼핑몰에 오신 것을 환영합니다</h1>
+		<table border="1">
+			<thead>
+				<tr>
+					<th>상품 번호</th>
+					<th>이름</th>
+					<th>가격</th>
+					<th>카테고리</th>
+					<th>이미지</th>
+					<th>상세페이지로이동하기</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="c : ${clothes}">
+					<td th:text="${c.clothes_id}"></td>
+					<td th:text="${c.clothes_name}"></td>
+					<td th:text="${c.clothes_price}"></td>
+					<td th:text="${c.clothes_category}"></td>
+					<td>
+						<img th:src="@{${c.clothes_image_path}}">
+					</td>
+					<td>
+						<a th:href="@{'/clotheDetail/' + ${c.clothes_id}}">상세페이지로이동하기</a>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+		<a href="#">상품정보 입력하기</a>
+	</body>
+</html>

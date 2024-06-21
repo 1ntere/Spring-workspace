@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.shoppingmall.mapper.ClothesMapper">
+	<!-- 옷 정보 가져오기 -->
+	<select id="getAllClothes" resultType="com.shoppingmall.dto.Cloth">
+		SELECT * FROM clothes
+	</select>
+	
+	<!-- 옷 정보 상세보기 -->
+	<select id ="getClothById" resultType="com.shoppingmall.dto.Cloth" parameterType="int">
+		SELECT * FROM clothes
+		WHERE clothes_id = #{clothes_id}
+	</select>
+	
+	<!-- 옷 입력하기 -->
+	<insert id="uploadCloth" parameterType="com.shoppingmall.dto.Cloth">
+		INSERT INTO clothes (clothes_id, clothes_name, clothes_price, clothes_category, clothes_image_path)
+		VALUES (clothes_seq.NEXTVAL, #{clothes_name}, #{clothes_price}, #{clothes_category}, #{clothes_image_path})
+	
+	</insert>
+</mapper>
