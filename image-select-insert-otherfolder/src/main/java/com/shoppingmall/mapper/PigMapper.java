@@ -15,4 +15,3 @@ public interface PigMapper {
 	//3. 돼지 정보 DB에 업로드하기 -> void (Pig)
 	public void uploadPig(Pig pig);
 }
-
