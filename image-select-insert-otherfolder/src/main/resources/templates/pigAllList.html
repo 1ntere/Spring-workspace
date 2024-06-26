@@ -17,12 +17,33 @@
 			</thead>
 			<tbody>
 				<tr th:each="p : ${pigs}">
-					<td th:text="${p.pig_name}"></td>
-						    <!-- ${pigs} : pigController.java 22번째 줄에서
+				            <!-- ${pigs} : pigController.java 22번째 줄에서
 						                   model.addAttribute("pigs", pigs);
 						                   의 pigs -->
+					<td th:text="${p.pig_name}"></td>
 					<td>
 						<img th:src="@{${p.pig_image_path}}">
+						       <!-- "@{${p.pig_image_path}}" : ★ 오류 발생
+						                                       ★ 현재 PigService.java 43번째 줄과 69번째 줄에선 각각
+									                           String 파일이름 = file.getOriginalFilename();
+									                           pig.setPig_image_path("/images/" + 파일이름);
+									                           으로 코드가 작성되어있으므로
+									                           DB에는 pig_image_path가 "/images/파일이름.jpg" 꼴로 저장이 되고
+									                           따라서 pigAllList.html의 25번째 줄에서
+									                           <img th:src="@{${p.pig_image_path}}">
+									                           로 작성하여도 img 태그에서 src="/images/파일이름.jpg" 꼴이 되어서
+									                           문제가 발생하지 않는다.
+						                                       ★ 하지만 만약 PigService.java 43번째 줄과 69번째 줄에서 각각
+						                                       String 파일이름 = file.getOriginalFilename();
+									                           pig.setPig_image_path(파일이름);
+									                           으로 코드를 작성했다면
+									                           DB에서 pig_image_path가 "파일이름.jpg" 꼴로 저장이 되는데
+									                           이미지를 불러오려면 pigAllList.html의 25번째 줄
+									                           <img th:src="@{${p.pig_image_path}}">
+									                           img 태그에서 src="/images/파일이름.jpg" 꼴이 되어야하므로
+									                           <img th:src="@{'/images/' + ${p.pig_image_path}}">
+									                           로 바꿔주어야 한다.
+									                           만약 바꿨다면 img 태그에서 src="/images/파일이름.jpg" 꼴이 되어서 정상적으로 작동 -->
 					</td>
 					<td>
 						<a th:href="@{'/pigDetail/' + ${p.pig_id}}">상세페이지로이동하기</a>

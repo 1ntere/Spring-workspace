@@ -41,9 +41,10 @@ public class PigService {
 		//만약에 파일 이름을 저장하길 원한다면
 		//이미지 업로드 할 때 임시저장되어있는 이미지 파일 이름 가져옴
 		String 파일이름 = file.getOriginalFilename();
+		System.out.println("파일 이름 : " + 파일이름);
 		
 		//바탕화면에 pigImg라는 폴더가 없으면 생성하기
-		String 이미지저장폴더 = "C:/Users/user1/Desktop/pigImg/";
+		String 이미지저장폴더 = "C:/Users/user1/servlet_jsp_workspace/image-select-insert-otherfolder/src/main/resources/static/images/";
 		
 		File 폴더경로확인 = new File(이미지저장폴더);
 		//만약에 저장하고자하는 이미지 폴더가 존재하지 않을 경우 경로들 모두 생성!
@@ -58,7 +59,6 @@ public class PigService {
 		
 		//폴더가 안전하게 생성되었는지 확인을 모두 마치고 지정된 폴더에 사진 올리기
 		File 사진파일올리기 = new File(이미지저장폴더 + 파일이름);
-		String DB에파일경로및파일명전달 = 이미지저장폴더 + 파일이름;
 		try {
 			file.transferTo(사진파일올리기);
 			
@@ -66,9 +66,7 @@ public class PigService {
 			Pig pig = new Pig();
 			pig.setPig_name(pig_name);
 			pig.setPig_age(pig_age);
-			pig.setPig_image_path(DB에파일경로및파일명전달);
-			                    //DB에파일경로및파일명전달 : Pig_image_path가 String 값이기 때문에
-			                    //                    사진파일올리기(File 자료형)이 올 수 없음
+			pig.setPig_image_path("/images/" + 파일이름);
 			
 			pigMapper.uploadPig(pig);
 			System.out.println("Mapper에 Service로 pig insert 전달 성공");
@@ -77,5 +75,4 @@ public class PigService {
 			e.printStackTrace();
 		}
 	}
-
 }
